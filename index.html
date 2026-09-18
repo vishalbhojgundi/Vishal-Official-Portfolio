@@ -1,334 +1,1390 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vishal Bhojgundi — Java Full-Stack Developer</title>
-<meta name="description" content="Portfolio of Vishal Bhojgundi, Java Full-Stack Developer (Fresher) — Spring Boot, MySQL, JWT security, REST APIs.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>
+    Vishal Bhojgundi — Java Full-Stack Developer
+  </title>
+
+  <meta
+          name="description"
+          content="Portfolio of Vishal Bhojgundi, Java Full-Stack Developer."
+  >
+
+  <!-- Google Fonts -->
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link
+          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
 
-<!-- grain / texture overlay -->
+<!-- =========================================================
+     GRAIN
+     ========================================================= -->
+
 <div class="grain" aria-hidden="true"></div>
 
+
+<!-- =========================================================
+     NAVIGATION
+     ========================================================= -->
+
 <nav class="topbar" id="topbar">
+
   <div class="topbar-inner">
+
     <a href="#top" class="brand">
-      <span class="brand-mark">VB</span>
-      <span class="brand-file">DOSSIER&nbsp;/&nbsp;2026</span>
+
+            <span class="brand-mark">
+                VB
+            </span>
+
+      <span class="brand-file">
+                DOSSIER / 2026
+            </span>
+
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
+
+
+    <button
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
     </button>
+
+
     <ul class="nav-links" id="navLinks">
-      <li><a href="#profile"><span class="idx">01</span>Profile</a></li>
-      <li><a href="#skills"><span class="idx">02</span>Skillset</a></li>
-      <li><a href="#case-file"><span class="idx">03</span>Case File</a></li>
-      <li><a href="#education"><span class="idx">04</span>Records</a></li>
-      <li><a href="#contact"><span class="idx">05</span>Contact</a></li>
+
+      <li>
+        <a href="#profile">
+          <span class="idx">01</span>
+          Profile
+        </a>
+      </li>
+
+      <li>
+        <a href="#skills">
+          <span class="idx">02</span>
+          Skillset
+        </a>
+      </li>
+
+      <li>
+        <a href="#case-file">
+          <span class="idx">03</span>
+          Case File
+        </a>
+      </li>
+
+      <!-- NEW -->
+      <li>
+        <a href="#internship">
+          <span class="idx">04</span>
+          Internship
+        </a>
+      </li>
+
+      <li>
+        <a href="#education">
+          <span class="idx">05</span>
+          Records
+        </a>
+      </li>
+
+      <li>
+        <a href="#contact">
+          <span class="idx">06</span>
+          Contact
+        </a>
+      </li>
+
     </ul>
+
   </div>
+
 </nav>
 
-<!-- ============ HERO ============ -->
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
 <header class="hero" id="top">
+
   <div class="hero-inner">
-    <p class="hero-eyebrow">Application File No. <span>VB-2026-MCA</span></p>
-    <h1 class="hero-title">
-      Vishal<br><span class="hero-title-accent">Bhojgundi</span>
-    </h1>
-    <p class="hero-role">Java Full&#8209;Stack Developer <span class="dot">&middot;</span> Fresher</p>
-    <p class="hero-desc">
-      I build backends that don't trust anyone by default &mdash; role-based access, JWT
-      authentication, and one-person-one-vote validation, proven on a real
-      election system built end to end with Spring Boot and MySQL.
+
+    <p class="hero-eyebrow">
+
+      Application File No.
+
+      <span>
+                VB-2026-MCA
+            </span>
+
     </p>
 
+
+    <h1 class="hero-title">
+
+      Vishal
+
+      <br>
+
+      <span class="hero-title-accent">
+                Bhojgundi
+            </span>
+
+    </h1>
+
+
+    <p class="hero-role">
+
+      Java Full-Stack Developer
+
+      <span class="dot">
+                &middot;
+            </span>
+
+      Fresher
+
+    </p>
+
+
+    <p class="hero-desc">
+
+      I build backends that don't trust anyone by default —
+      role-based access, JWT authentication, and
+      one-person-one-vote validation, proven on a real
+      election system built end to end with Spring Boot
+      and MySQL.
+
+    </p>
+
+
     <div class="hero-actions">
-      <a href="#case-file" class="btn btn-primary">Open Case File</a>
-      <a href="mailto:vishalbhojgundi2002@gmail.com" class="btn btn-ghost">Email Me</a>
+
+      <a
+              href="#case-file"
+              class="btn btn-primary">
+
+        Open Case File
+
+      </a>
+
+
+      <a
+              href="mailto:vishalbhojgundi2002@gmail.com"
+              class="btn btn-ghost">
+
+        Email Me
+
+      </a>
+
     </div>
 
-    <div class="hero-stamp" id="heroStamp" aria-hidden="true">
-      <svg viewBox="0 0 160 160" width="140" height="140" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <circle cx="80" cy="80" r="74" fill="none" stroke="currentColor" stroke-width="2.5"/>
-        <circle cx="80" cy="80" r="64" fill="none" stroke="currentColor" stroke-width="1"/>
-        <path id="stampCircleTop" d="M 80 16 A 64 64 0 0 1 143.7 100" fill="none"/>
-        <text font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="600" letter-spacing="3" fill="currentColor">
-          <textPath xlink:href="#stampCircleTop" href="#stampCircleTop" startOffset="2%">VERIFIED CANDIDATE</textPath>
+
+    <!-- STAMP -->
+
+    <div
+            class="hero-stamp"
+            id="heroStamp"
+            aria-hidden="true">
+
+      <svg
+              viewBox="0 0 160 160"
+              width="140"
+              height="140"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+
+        <circle
+                cx="80"
+                cy="80"
+                r="74"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+        />
+
+        <circle
+                cx="80"
+                cy="80"
+                r="64"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+        />
+
+        <path
+                id="stampCircleTop"
+                d="M 80 16 A 64 64 0 0 1 143.7 100"
+                fill="none"
+        />
+
+        <text
+                font-family="'IBM Plex Mono', monospace"
+                font-size="10.5"
+                font-weight="600"
+                letter-spacing="3"
+                fill="currentColor">
+
+          <textPath
+                  xlink:href="#stampCircleTop"
+                  href="#stampCircleTop"
+                  startOffset="2%">
+
+            VERIFIED CANDIDATE
+
+          </textPath>
+
         </text>
-        <text x="80" y="76" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="15" font-weight="700" letter-spacing="1" fill="currentColor">MCA</text>
-        <text x="80" y="94" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" letter-spacing="1" fill="currentColor">CGPA 8.5</text>
-        <text x="80" y="112" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="2" fill="currentColor">UBDTCE &middot; 2026</text>
+
+
+        <text
+                x="80"
+                y="76"
+                text-anchor="middle"
+                font-family="'IBM Plex Mono', monospace"
+                font-size="15"
+                font-weight="700"
+                letter-spacing="1"
+                fill="currentColor">
+
+          MCA
+
+        </text>
+
+
+        <text
+                x="80"
+                y="94"
+                text-anchor="middle"
+                font-family="'IBM Plex Mono', monospace"
+                font-size="11"
+                letter-spacing="1"
+                fill="currentColor">
+
+          CGPA 8.5
+
+        </text>
+
+
+        <text
+                x="80"
+                y="112"
+                text-anchor="middle"
+                font-family="'IBM Plex Mono', monospace"
+                font-size="9"
+                letter-spacing="2"
+                fill="currentColor">
+
+          UBDTCE · 2026
+
+        </text>
+
       </svg>
+
     </div>
+
   </div>
-  <div class="hero-ledger" aria-hidden="true">
-    <span>BENGALURU, IN</span><span>REC-000</span><span>STATUS: OPEN TO WORK</span>
+
+
+  <div
+          class="hero-ledger"
+          aria-hidden="true">
+
+        <span>
+            BENGALURU, IN
+        </span>
+
+    <span>
+            REC-000
+        </span>
+
+    <span>
+            STATUS: OPEN TO WORK
+        </span>
+
   </div>
+
 </header>
+
+
 
 <main>
 
-<!-- ============ PROFILE ============ -->
-<section class="section" id="profile">
-  <div class="section-inner">
-    <p class="section-tag"><span class="seal" data-seal></span>Record 01 &mdash; Profile</p>
-    <h2 class="section-title">Objective</h2>
 
-    <div class="dossier-card">
-      <div class="dossier-field">
-        <span class="field-label">NAME</span>
-        <span class="field-value">Vishal Bhojgundi</span>
-      </div>
-      <div class="dossier-field">
-        <span class="field-label">ROLE SOUGHT</span>
-        <span class="field-value">Software Developer &mdash; Java / Full Stack</span>
-      </div>
-      <div class="dossier-field">
-        <span class="field-label">BASED IN</span>
-        <span class="field-value">Bengaluru, Karnataka, India</span>
-      </div>
-      <div class="dossier-field">
-        <span class="field-label">CORE STACK</span>
-        <span class="field-value">Java &middot; Spring Boot &middot; MySQL &middot; JavaScript</span>
-      </div>
-      <div class="dossier-field dossier-field-wide">
-        <span class="field-label">STATEMENT</span>
-        <p class="field-value">
-          A motivated, detail-oriented fresher with a strong grounding in Java (OOPs,
-          exception handling), the web fundamentals (HTML, CSS, JavaScript), and MySQL.
-          I've shipped a full security-critical application &mdash; an online voting
-          system &mdash; from database schema to authenticated REST API, and I'm looking
-          to bring that same rigor to a product team where correctness and clean
-          architecture actually matter.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- =========================================================
+       PROFILE
+       ========================================================= -->
 
-<!-- ============ SKILLS ============ -->
-<section class="section section-alt" id="skills">
-  <div class="section-inner">
-    <p class="section-tag"><span class="seal" data-seal></span>Record 02 &mdash; Skillset</p>
-    <h2 class="section-title">Technical Skills</h2>
-    <p class="section-lede">Every tag below is something I've actually written code with &mdash; not a keyword list.</p>
+  <section
+          class="section"
+          id="profile">
 
-    <div class="skill-grid">
+    <div class="section-inner">
 
-      <article class="skill-block">
-        <header class="skill-block-head">
-          <span class="skill-code">LANG&#8209;01</span>
-          <h3>Programming</h3>
-        </header>
-        <ul class="tag-row">
-          <li class="tag" tabindex="0">Java</li>
-          <li class="tag" tabindex="0">OOPs</li>
-          <li class="tag" tabindex="0">Exception Handling</li>
-          <li class="tag" tabindex="0">Collections</li>
-        </ul>
-      </article>
 
-      <article class="skill-block">
-        <header class="skill-block-head">
-          <span class="skill-code">WEB&#8209;02</span>
-          <h3>Web Development</h3>
-        </header>
-        <ul class="tag-row">
-          <li class="tag" tabindex="0">HTML</li>
-          <li class="tag" tabindex="0">CSS</li>
-          <li class="tag" tabindex="0">JavaScript</li>
-          <li class="tag" tabindex="0">AngularJS</li>
-        </ul>
-      </article>
+      <p class="section-tag">
 
-      <article class="skill-block">
-        <header class="skill-block-head">
-          <span class="skill-code">SVC&#8209;03</span>
-          <h3>Backend &amp; APIs</h3>
-        </header>
-        <ul class="tag-row">
-          <li class="tag" tabindex="0">Spring Boot</li>
-          <li class="tag" tabindex="0">REST APIs</li>
-          <li class="tag" tabindex="0">JWT Auth</li>
-          <li class="tag" tabindex="0">Role-Based Access</li>
-        </ul>
-      </article>
+            <span
+                    class="seal"
+                    data-seal>
+            </span>
 
-      <article class="skill-block">
-        <header class="skill-block-head">
-          <span class="skill-code">DB&#8209;04</span>
-          <h3>Database</h3>
-        </header>
-        <ul class="tag-row">
-          <li class="tag" tabindex="0">MySQL</li>
-          <li class="tag" tabindex="0">SQL Queries</li>
-          <li class="tag" tabindex="0">DBMS Fundamentals</li>
-          <li class="tag" tabindex="0">Schema Design</li>
-        </ul>
-      </article>
+        Record 01 — Profile
 
-    </div>
-  </div>
-</section>
+      </p>
 
-<!-- ============ CASE FILE / PROJECT ============ -->
-<section class="section" id="case-file">
-  <div class="section-inner">
-    <p class="section-tag"><span class="seal" data-seal></span>Record 03 &mdash; Case File</p>
-    <h2 class="section-title">Online Voting System</h2>
-    <p class="section-lede">A secure, full-stack election platform &mdash; the project this whole site is modeled after.</p>
 
-    <div class="case-file">
-      <div class="case-file-strip" aria-hidden="true">
-        <span>EXHIBIT A</span><span>JAVA FULL STACK</span><span>INTERNSHIP PROJECT</span>
-      </div>
+      <h2 class="section-title">
+        Objective
+      </h2>
 
-      <div class="case-file-body">
-        <div class="case-file-desc">
-          <p>
-            Built end to end with Java, Spring Boot, MySQL, and JWT. The system lets
-            an administrator create elections, register candidates, and manage
-            voters, while every voter gets a single authenticated, tamper-resistant
-            vote &mdash; enforced at the database and API layer, not just the UI.
+
+      <div class="dossier-card">
+
+
+        <div class="dossier-field">
+
+                <span class="field-label">
+                    NAME
+                </span>
+
+          <span class="field-value">
+                    Vishal Bhojgundi
+                </span>
+
+        </div>
+
+
+        <div class="dossier-field">
+
+                <span class="field-label">
+                    ROLE SOUGHT
+                </span>
+
+          <span class="field-value">
+                    Software Developer — Java / Full Stack
+                </span>
+
+        </div>
+
+
+        <div class="dossier-field">
+
+                <span class="field-label">
+                    BASED IN
+                </span>
+
+          <span class="field-value">
+                    Bengaluru, Karnataka, India
+                </span>
+
+        </div>
+
+
+        <div class="dossier-field">
+
+                <span class="field-label">
+                    CORE STACK
+                </span>
+
+          <span class="field-value">
+                    Java · Spring Boot · MySQL · JavaScript
+                </span>
+
+        </div>
+
+
+        <div class="dossier-field dossier-field-wide">
+
+                <span class="field-label">
+                    STATEMENT
+                </span>
+
+          <p class="field-value">
+
+            A motivated, detail-oriented fresher with
+            a strong grounding in Java, OOPs, exception
+            handling, HTML, CSS, JavaScript and MySQL.
+            I have practical experience building full-stack
+            applications using Spring Boot and MySQL.
+
           </p>
 
-          <div class="clause-group">
-            <h4>Security clauses</h4>
-            <ul class="clause-list">
-              <li><span class="clause-tick">&#10003;</span> JWT-based authentication on every request</li>
-              <li><span class="clause-tick">&#10003;</span> One-person-one-vote validation server-side</li>
-              <li><span class="clause-tick">&#10003;</span> Role-based access control (admin vs. voter)</li>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       SKILLS
+       ========================================================= -->
+
+  <section
+          class="section section-alt"
+          id="skills">
+
+    <div class="section-inner">
+
+
+      <p class="section-tag">
+
+            <span
+                    class="seal"
+                    data-seal>
+            </span>
+
+        Record 02 — Skillset
+
+      </p>
+
+
+      <h2 class="section-title">
+        Technical Skills
+      </h2>
+
+
+      <p class="section-lede">
+
+        Technologies and concepts I have learned and
+        practiced through academic projects and
+        internship experience.
+
+      </p>
+
+
+      <div class="skill-grid">
+
+
+        <article class="skill-block">
+
+          <header class="skill-block-head">
+
+                    <span class="skill-code">
+                        LANG-01
+                    </span>
+
+            <h3>
+              Programming
+            </h3>
+
+          </header>
+
+
+          <ul class="tag-row">
+
+            <li class="tag">
+              Java
+            </li>
+
+            <li class="tag">
+              OOPs
+            </li>
+
+            <li class="tag">
+              Exception Handling
+            </li>
+
+            <li class="tag">
+              Collections
+            </li>
+
+          </ul>
+
+        </article>
+
+
+
+        <article class="skill-block">
+
+          <header class="skill-block-head">
+
+                    <span class="skill-code">
+                        WEB-02
+                    </span>
+
+            <h3>
+              Web Development
+            </h3>
+
+          </header>
+
+
+          <ul class="tag-row">
+
+            <li class="tag">
+              HTML
+            </li>
+
+            <li class="tag">
+              CSS
+            </li>
+
+            <li class="tag">
+              JavaScript
+            </li>
+
+            <li class="tag">
+              AngularJS
+            </li>
+
+          </ul>
+
+        </article>
+
+
+
+        <article class="skill-block">
+
+          <header class="skill-block-head">
+
+                    <span class="skill-code">
+                        SVC-03
+                    </span>
+
+            <h3>
+              Backend & APIs
+            </h3>
+
+          </header>
+
+
+          <ul class="tag-row">
+
+            <li class="tag">
+              Spring Boot
+            </li>
+
+            <li class="tag">
+              REST APIs
+            </li>
+
+            <li class="tag">
+              JWT Authentication
+            </li>
+
+            <li class="tag">
+              Role-Based Access
+            </li>
+
+          </ul>
+
+        </article>
+
+
+
+        <article class="skill-block">
+
+          <header class="skill-block-head">
+
+                    <span class="skill-code">
+                        DB-04
+                    </span>
+
+            <h3>
+              Database
+            </h3>
+
+          </header>
+
+
+          <ul class="tag-row">
+
+            <li class="tag">
+              MySQL
+            </li>
+
+            <li class="tag">
+              SQL Queries
+            </li>
+
+            <li class="tag">
+              DBMS Fundamentals
+            </li>
+
+            <li class="tag">
+              Schema Design
+            </li>
+
+          </ul>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       CASE FILE
+       ========================================================= -->
+
+  <section
+          class="section"
+          id="case-file">
+
+    <div class="section-inner">
+
+
+      <p class="section-tag">
+
+            <span
+                    class="seal"
+                    data-seal>
+            </span>
+
+        Record 03 — Case File
+
+      </p>
+
+
+      <h2 class="section-title">
+        Online Voting System
+      </h2>
+
+
+      <p class="section-lede">
+
+        A secure, full-stack election platform developed
+        using Java, Spring Boot, MySQL and JWT authentication.
+
+      </p>
+
+
+      <div class="case-file">
+
+
+        <div
+                class="case-file-strip">
+
+                <span>
+                    EXHIBIT A
+                </span>
+
+          <span>
+                    JAVA FULL STACK
+                </span>
+
+          <span>
+                    INTERNSHIP PROJECT
+                </span>
+
+        </div>
+
+
+        <div class="case-file-body">
+
+
+          <div class="case-file-desc">
+
+            <p>
+
+              Built end to end with Java, Spring Boot,
+              MySQL and JWT authentication. The system
+              supports elections, candidates, voters
+              and secure voting.
+
+            </p>
+
+
+            <div class="clause-group">
+
+              <h4>
+                Security clauses
+              </h4>
+
+
+              <ul class="clause-list">
+
+
+                <li>
+
+                                <span class="clause-tick">
+                                    ✓
+                                </span>
+
+                  JWT-based authentication
+
+                </li>
+
+
+                <li>
+
+                                <span class="clause-tick">
+                                    ✓
+                                </span>
+
+                  One-person-one-vote validation
+
+                </li>
+
+
+                <li>
+
+                                <span class="clause-tick">
+                                    ✓
+                                </span>
+
+                  Role-based access control
+
+                </li>
+
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+          <div class="case-file-terminal">
+
+
+            <div class="terminal-head">
+
+              <span class="terminal-dot"></span>
+              <span class="terminal-dot"></span>
+              <span class="terminal-dot"></span>
+
+              <span class="terminal-title">
+                            api/routes.log
+                        </span>
+
+            </div>
+
+
+            <pre
+                    class="terminal-body"
+                    id="terminalBody">
+                    </pre>
+
+          </div>
+
+        </div>
+
+
+        <div class="case-file-columns">
+
+
+          <div class="case-col">
+
+            <h5>
+              Admin can
+            </h5>
+
+            <ul>
+
+              <li>
+                Create elections
+              </li>
+
+              <li>
+                Add candidates
+              </li>
+
+              <li>
+                Manage voters
+              </li>
+
+              <li>
+                View results
+              </li>
+
             </ul>
+
           </div>
+
+
+          <div class="case-col">
+
+            <h5>
+              Voter can
+            </h5>
+
+            <ul>
+
+              <li>
+                Log in securely
+              </li>
+
+              <li>
+                Vote exactly once
+              </li>
+
+              <li>
+                Participate in elections
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="case-col">
+
+            <h5>
+              Database holds
+            </h5>
+
+            <ul>
+
+              <li>
+                User details
+              </li>
+
+              <li>
+                Election data
+              </li>
+
+              <li>
+                Candidate data
+              </li>
+
+              <li>
+                Votes and results
+              </li>
+
+            </ul>
+
+          </div>
+
+
         </div>
 
-        <div class="case-file-terminal">
-          <div class="terminal-head">
-            <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
-            <span class="terminal-title">api/routes.log</span>
-          </div>
-          <pre class="terminal-body" id="terminalBody"></pre>
-        </div>
       </div>
 
-      <div class="case-file-columns">
-        <div class="case-col">
-          <h5>Admin can</h5>
-          <ul>
-            <li>Create elections</li>
-            <li>Add candidates</li>
-            <li>Manage voters</li>
-            <li>View results</li>
-          </ul>
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       INTERNSHIP + CERTIFICATE
+       ========================================================= -->
+
+  <section
+          class="section section-alt"
+          id="internship">
+
+    <div class="section-inner">
+
+
+      <p class="section-tag">
+
+            <span
+                    class="seal"
+                    data-seal>
+            </span>
+
+        Record 04 — Internship
+
+      </p>
+
+
+      <h2 class="section-title">
+        Java Full Stack Internship
+      </h2>
+
+
+      <p class="section-lede">
+
+        Professional internship experience focused on
+        Java full-stack development, backend programming,
+        database integration and web application development.
+
+      </p>
+
+
+      <!-- INTERNSHIP CARD -->
+
+      <div class="internship-card">
+
+
+        <!-- HEADER -->
+
+        <div class="internship-header">
+
+          <div>
+
+                    <span class="field-label">
+                        ORGANIZATION
+                    </span>
+
+            <h3>
+              Nexus Core Innovations, Bangalore
+            </h3>
+
+          </div>
+
+
+          <span class="internship-badge">
+                    COMPLETED
+                </span>
+
         </div>
-        <div class="case-col">
-          <h5>Voter can</h5>
-          <ul>
-            <li>Log in securely</li>
-            <li>Vote exactly once</li>
-            <li>Participate in open elections</li>
-          </ul>
+
+
+        <!-- DETAILS -->
+
+        <div class="internship-details">
+
+
+          <div class="internship-detail">
+
+                    <span class="field-label">
+                        ROLE
+                    </span>
+
+            <span>
+                        Java Full Stack Developer Intern
+                    </span>
+
+          </div>
+
+
+          <div class="internship-detail">
+
+                    <span class="field-label">
+                        DURATION
+                    </span>
+
+            <span>
+                        3 Months
+                    </span>
+
+          </div>
+
+
+          <div class="internship-detail">
+
+                    <span class="field-label">
+                        TECHNOLOGIES
+                    </span>
+
+            <span>
+                        Java · Spring Boot · MySQL · HTML · CSS · JavaScript
+                    </span>
+
+          </div>
+
+
+          <div class="internship-detail">
+
+                    <span class="field-label">
+                        PROJECT
+                    </span>
+
+            <span>
+                        Online Voting System
+                    </span>
+
+          </div>
+
+
         </div>
-        <div class="case-col">
-          <h5>Database holds</h5>
-          <ul>
-            <li>User details</li>
-            <li>Election &amp; candidate data</li>
-            <li>Votes &amp; results</li>
-          </ul>
+
+
+        <!-- CERTIFICATE -->
+
+        <div class="certificate-area">
+
+
+          <div class="certificate-info">
+
+                    <span class="field-label">
+                        OFFICIAL DOCUMENT
+                    </span>
+
+
+            <h3>
+              Internship Certificate
+            </h3>
+
+
+            <p>
+              View the official internship certificate
+              issued by the organization.
+            </p>
+
+          </div>
+
+
+          <div class="certificate-actions">
+
+
+            <!-- VIEW CERTIFICATE -->
+
+            <a
+                    href="certificates/internship-certificate.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary">
+
+              View Certificate
+
+            </a>
+
+
+            <!-- DOWNLOAD CERTIFICATE -->
+
+            <a
+                    href="certificates/internship-certificate.pdf"
+                    download
+                    class="btn btn-ghost">
+
+              Download Certificate
+
+            </a>
+
+
+          </div>
+
         </div>
+
+
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ EDUCATION / TIMELINE ============ -->
-<section class="section section-alt" id="education">
-  <div class="section-inner">
-    <p class="section-tag"><span class="seal" data-seal></span>Record 04 &mdash; Academic Ledger</p>
-    <h2 class="section-title">Education</h2>
-
-    <ol class="ledger">
-      <li class="ledger-row">
-        <span class="ledger-year">2026</span>
-        <span class="ledger-main">
-          <strong>Master of Computer Application (MCA)</strong>
-          <em>University BDT College of Engineering, Davanagere</em>
-        </span>
-        <span class="ledger-score">CGPA 8.5</span>
-      </li>
-      <li class="ledger-row">
-        <span class="ledger-year">2024</span>
-        <span class="ledger-main">
-          <strong>Bachelor of Science (B.Sc.)</strong>
-          <em>Channa Basaveshwar PU &amp; Degree College, Bhalki</em>
-        </span>
-        <span class="ledger-score">77.47%</span>
-      </li>
-      <li class="ledger-row">
-        <span class="ledger-year">2020</span>
-        <span class="ledger-main">
-          <strong>12th &mdash; Science</strong>
-          <em>Diamond Independent PU Science College, Bhalki</em>
-        </span>
-        <span class="ledger-score">79.64%</span>
-      </li>
-      <li class="ledger-row">
-        <span class="ledger-year">2018</span>
-        <span class="ledger-main">
-          <strong>10th Standard</strong>
-          <em>BTVP High School, Dubalgundi</em>
-        </span>
-        <span class="ledger-score">79.84%</span>
-      </li>
-    </ol>
-
-    <div class="lang-row">
-      <span class="field-label">LANGUAGES</span>
-      <span class="lang-pill">English</span>
-      <span class="lang-pill">Kannada</span>
-      <span class="lang-pill">Hindi</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<footer class="section contact" id="contact">
-  <div class="section-inner">
-    <p class="section-tag section-tag-light"><span class="seal seal-light" data-seal></span>Record 05 &mdash; Contact</p>
-    <h2 class="section-title contact-title">Let's talk about the role.</h2>
-    <p class="contact-lede">Open to full-stack and backend developer roles. Based in Bengaluru, happy to relocate or work remote.</p>
-
-    <div class="contact-grid">
-      <a class="contact-card" href="mailto:vishalbhojgundi2002@gmail.com">
-        <span class="contact-label">Email</span>
-        <span class="contact-value">vishalbhojgundi2002@gmail.com</span>
-      </a>
-      <a class="contact-card" href="https://github.com/vishalbhojgundi"  target="_blank">
-        <span class="contact-label">GitHub</span>
-        <span class="contact-value"> GitHub Account</span>
-      </a>
-      <a class="contact-card" href="https://www.linkedin.com/in/vishalbhojgundi"  target="_blank" >
-        <span class="contact-label">LinkedIn</span>
-        <span class="contact-value">Vishal Bhojgundi</span>
-      </a>
-      <a class="contact-card" href="#" data-placeholder="portfolio-url">
-        <span class="contact-label">Portfolio</span>
-        <span class="contact-value">Add your live site URL</span>
-      </a>
     </div>
 
-    <p class="footer-fine">&copy; 2026 Vishal Bhojgundi &middot; Bengaluru, India &middot; This file is verified accurate as of the last commit.</p>
-  </div>
-</footer>
+  </section>
+
+
+
+  <!-- =========================================================
+       EDUCATION
+       ========================================================= -->
+
+  <section
+          class="section"
+          id="education">
+
+    <div class="section-inner">
+
+
+      <p class="section-tag">
+
+            <span
+                    class="seal"
+                    data-seal>
+            </span>
+
+        Record 05 — Academic Ledger
+
+      </p>
+
+
+      <h2 class="section-title">
+        Education
+      </h2>
+
+
+      <ol class="ledger">
+
+
+        <li class="ledger-row">
+
+                <span class="ledger-year">
+                    2026
+                </span>
+
+
+          <span class="ledger-main">
+
+                    <strong>
+                        Master of Computer Application (MCA)
+                    </strong>
+
+                    <em>
+                        University BDT College of Engineering,
+                        Davanagere
+                    </em>
+
+                </span>
+
+
+          <span class="ledger-score">
+                    CGPA 8.5
+                </span>
+
+        </li>
+
+
+
+        <li class="ledger-row">
+
+                <span class="ledger-year">
+                    2024
+                </span>
+
+
+          <span class="ledger-main">
+
+                    <strong>
+                        Bachelor of Science (B.Sc.)
+                    </strong>
+
+                    <em>
+                        Gulbarga University, Kalaburagi
+                    </em>
+
+                </span>
+
+
+          <span class="ledger-score">
+                    77.47%
+                </span>
+
+        </li>
+
+
+
+        <li class="ledger-row">
+
+                <span class="ledger-year">
+                    2020
+                </span>
+
+
+          <span class="ledger-main">
+
+                    <strong>
+                        12th — Science
+                    </strong>
+
+                    <em>
+                        Diamond Independent PU Science College,
+                        Bhalki
+                    </em>
+
+                </span>
+
+
+          <span class="ledger-score">
+                    79.64%
+                </span>
+
+        </li>
+
+
+
+        <li class="ledger-row">
+
+                <span class="ledger-year">
+                    2018
+                </span>
+
+
+          <span class="ledger-main">
+
+                    <strong>
+                        10th Standard
+                    </strong>
+
+                    <em>
+                        BTVP High School, Dubalgundi
+                    </em>
+
+                </span>
+
+
+          <span class="ledger-score">
+                    79.84%
+                </span>
+
+        </li>
+
+
+      </ol>
+
+
+      <div class="lang-row">
+
+            <span class="field-label">
+                LANGUAGES
+            </span>
+
+        <span class="lang-pill">
+                English
+            </span>
+
+        <span class="lang-pill">
+                Kannada
+            </span>
+
+        <span class="lang-pill">
+                Hindi
+            </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       CONTACT
+       ========================================================= -->
+
+  <footer
+          class="section contact"
+          id="contact">
+
+    <div class="section-inner">
+
+
+      <p class="section-tag section-tag-light">
+
+            <span
+                    class="seal seal-light"
+                    data-seal>
+            </span>
+
+        Record 06 — Contact
+
+      </p>
+
+
+      <h2 class="section-title contact-title">
+
+        Let's talk about the role.
+
+      </h2>
+
+
+      <p class="contact-lede">
+
+        Open to full-stack and backend developer roles.
+        Based in Bengaluru, happy to relocate or work remote.
+
+      </p>
+
+
+      <div class="contact-grid">
+
+
+        <a
+                class="contact-card"
+                href="mailto:vishalbhojgundi2002@gmail.com">
+
+                <span class="contact-label">
+                    Email
+                </span>
+
+          <span class="contact-value">
+                    vishalbhojgundi2002@gmail.com
+                </span>
+
+        </a>
+
+
+        <a
+                class="contact-card"
+                href="https://github.com/vishalbhojgundi"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <span class="contact-label">
+                    GitHub
+                </span>
+
+          <span class="contact-value">
+                    GitHub Account
+                </span>
+
+        </a>
+
+
+        <a
+                class="contact-card"
+                href="https://www.linkedin.com/in/vishalbhojgundi"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <span class="contact-label">
+                    LinkedIn
+                </span>
+
+          <span class="contact-value">
+                    Vishal Bhojgundi
+                </span>
+
+        </a>
+
+
+        <a
+                class="contact-card"
+                href="https://vishalbhojgundi-official-web.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                <span class="contact-label">
+                    Portfolio
+                </span>
+
+          <span class="contact-value">
+                    Live Portfolio
+                </span>
+
+        </a>
+
+
+      </div>
+
+
+      <p class="footer-fine">
+
+        © 2026 Vishal Bhojgundi · Bengaluru, India
+
+      </p>
+
+    </div>
+
+  </footer>
+
 
 </main>
 
+
+<!-- JavaScript -->
+
 <script src="script.js"></script>
+
 </body>
+
 </html>
