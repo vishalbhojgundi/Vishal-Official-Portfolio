@@ -9,10 +9,11 @@ public class DBConnection {
     private static final String URL =
             "jdbc:mysql://centerbeam.proxy.rlwy.net:38257/railway?useSSL=true&serverTimezone=UTC";
 
-    private static final String USER = "root";
+    private static final String USER =
+            System.getenv("MYSQLUSER");
 
     private static final String PASSWORD =
-            "DB-PASSWORD";
+            System.getenv("MYSQL_ROOT_PASSWORD");
 
     public static Connection getConnection() throws SQLException {
 
@@ -20,7 +21,7 @@ public class DBConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new SQLException(
-                    "MySQL JDBC Driver not found. Check mysql-connector-j-8.4.0.jar",
+                    "MySQL JDBC Driver not found.",
                     e
             );
         }
