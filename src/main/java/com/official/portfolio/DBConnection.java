@@ -10,10 +10,10 @@ public class DBConnection {
             "jdbc:mysql://centerbeam.proxy.rlwy.net:38257/railway?useSSL=true&serverTimezone=UTC";
 
     private static final String USER =
-            System.getenv("MYSQLUSER");
+            System.getenv("DB_USER");
 
     private static final String PASSWORD =
-            System.getenv("MYSQL_ROOT_PASSWORD");
+            System.getenv("DB_PASSWORD");
 
     public static Connection getConnection() throws SQLException {
 
