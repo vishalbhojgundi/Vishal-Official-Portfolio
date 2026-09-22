@@ -520,3 +520,233 @@
 
 
 })();
+/* =========================================================
+   CERTIFICATE VIEWER
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const viewCertificateBtn =
+        document.getElementById("viewCertificateBtn");
+
+    const certificateModal =
+        document.getElementById("certificateModal");
+
+    const closeCertificateModal =
+        document.getElementById("closeCertificateModal");
+
+    const certificateViewerForm =
+        document.getElementById("certificateViewerForm");
+
+    const certificateMessage =
+        document.getElementById("certificateMessage");
+
+
+    /* -----------------------------------------------------
+       OPEN CERTIFICATE FORM
+       ----------------------------------------------------- */
+
+    if (viewCertificateBtn) {
+
+        viewCertificateBtn.addEventListener("click", function () {
+
+            certificateModal.classList.add("show");
+
+        });
+
+    }
+
+
+    /* -----------------------------------------------------
+       CLOSE CERTIFICATE FORM
+       ----------------------------------------------------- */
+
+    if (closeCertificateModal) {
+
+        closeCertificateModal.addEventListener("click", function () {
+
+            certificateModal.classList.remove("show");
+
+        });
+
+    }
+
+
+    /* -----------------------------------------------------
+       CLOSE WHEN CLICKING OUTSIDE THE FORM
+       ----------------------------------------------------- */
+
+    if (certificateModal) {
+
+        certificateModal.addEventListener("click", function (event) {
+
+            if (event.target === certificateModal) {
+
+                certificateModal.classList.remove("show");
+
+            }
+
+        });
+
+    }
+
+
+    /* -----------------------------------------------------
+       SUBMIT NAME + GENDER
+       ----------------------------------------------------- */
+
+    if (certificateViewerForm) {
+
+        certificateViewerForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById("viewerName")
+                        .value
+                        .trim();
+
+
+                const gender =
+                    document.getElementById("viewerGender")
+                        .value;
+
+
+                /* Validate name */
+
+                if (name === "") {
+
+                    certificateMessage.textContent =
+                        "Please enter your name.";
+
+                    return;
+
+                }
+
+
+                /* Validate gender */
+
+                if (gender === "") {
+
+                    certificateMessage.textContent =
+                        "Please select your gender.";
+
+                    return;
+
+                }
+
+
+                /* Show saving message */
+
+                certificateMessage.textContent =
+                    "Saving your details...";
+
+
+                try {
+
+                    /* ------------------------------------------------
+                       SEND DATA TO JAVA SERVLET
+                       ------------------------------------------------ */
+
+                    const formData =
+                        new URLSearchParams();
+
+
+                    formData.append(
+                        "name",
+                        name
+                    );
+
+
+                    formData.append(
+                        "gender",
+                        gender
+                    );
+
+
+                    const response =
+                        await fetch(
+                            "save-certificate-viewer",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/x-www-form-urlencoded;charset=UTF-8"
+                                },
+
+                                body:
+                                    formData.toString()
+                            }
+                        );
+
+
+                    /* ------------------------------------------------
+                       CHECK SERVER RESPONSE
+                       ------------------------------------------------ */
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Unable to save certificate viewer details."
+                        );
+
+                    }
+
+
+                    /* ------------------------------------------------
+                       SUCCESS
+                       ------------------------------------------------ */
+
+                    certificateMessage.textContent =
+                        "Details saved successfully. Opening certificate...";
+
+
+                    /* Wait a little and open certificate */
+
+                    setTimeout(function () {
+
+                        window.open(
+                            "certificates/internship-certificate.pdf",
+                            "_blank"
+                        );
+
+
+                        /* Close popup */
+
+                        certificateModal.classList.remove("show");
+
+
+                        /* Clear form */
+
+                        certificateViewerForm.reset();
+
+
+                        certificateMessage.textContent = "";
+
+
+                    }, 700);
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Certificate viewer error:",
+                        error
+                    );
+
+
+                    certificateMessage.textContent =
+                        "Unable to save your details. Please try again.";
+
+                }
+
+            }
+        );
+
+    }
+
+});

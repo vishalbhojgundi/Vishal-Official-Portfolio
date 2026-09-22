@@ -1048,29 +1048,14 @@
 
             <!-- VIEW CERTIFICATE -->
 
-            <a
-                    href="certificates/internship-certificate.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
+            <button
+                    type="button"
+                    id="viewCertificateBtn"
                     class="btn btn-primary">
 
               View Certificate
 
-            </a>
-
-
-            <!-- DOWNLOAD CERTIFICATE -->
-
-            <a
-                    href="certificates/internship-certificate.pdf"
-                    download
-                    class="btn btn-ghost">
-
-              Download Certificate
-
-            </a>
-
-
+            </button>
           </div>
 
         </div>
@@ -1344,7 +1329,107 @@
 
 </main>
 
+<!-- =========================================================
+     CERTIFICATE VIEWER MODAL
+     ========================================================= -->
 
+<div class="certificate-modal" id="certificateModal">
+
+  <div class="certificate-modal-box">
+
+    <button
+            type="button"
+            class="certificate-modal-close"
+            id="closeCertificateModal">
+      &times;
+    </button>
+
+    <p class="section-tag">
+      Certificate Verification
+    </p>
+
+    <h2>
+      View Internship Certificate
+    </h2>
+
+    <p class="certificate-modal-text">
+      Please enter your details before viewing the certificate.
+    </p>
+
+
+    <form id="certificateViewerForm">
+
+      <div class="certificate-form-group">
+
+        <label for="viewerName">
+          Name
+        </label>
+
+        <input
+                type="text"
+                id="viewerName"
+                name="name"
+                placeholder="Enter your name"
+                required
+                maxlength="100">
+
+      </div>
+
+
+      <div class="certificate-form-group">
+
+        <label for="viewerGender">
+          Gender
+        </label>
+
+        <select
+                id="viewerGender"
+                name="gender"
+                required>
+
+          <option value="">
+            Select Gender
+          </option>
+
+          <option value="Male">
+            Male
+          </option>
+
+          <option value="Female">
+            Female
+          </option>
+
+          <option value="Other">
+            Other
+          </option>
+
+          <option value="Prefer not to say">
+            Prefer not to say
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+              type="submit"
+              class="btn btn-primary certificate-submit-btn">
+
+        Submit & View Certificate
+
+      </button>
+
+      <p
+              id="certificateMessage"
+              class="certificate-message">
+      </p>
+
+    </form>
+
+  </div>
+
+</div>
 <!-- JavaScript -->
 
 <script src="script.js"></script>

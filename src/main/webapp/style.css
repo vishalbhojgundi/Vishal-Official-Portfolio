@@ -1825,3 +1825,262 @@ p {
     }
 
 }
+/* =========================================================
+   CERTIFICATE VIEWER MODAL
+   ========================================================= */
+
+.certificate-modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(5, 10, 20, 0.82);
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* Show modal */
+
+.certificate-modal.show {
+    display: flex;
+}
+
+
+/* Modal box */
+
+.certificate-modal-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+
+    padding: 38px;
+
+    background: #111a2b;
+
+    border: 1px solid #d4a91e;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.55);
+
+    animation: certificateModalOpen 0.25s ease;
+}
+
+
+/* Opening animation */
+
+@keyframes certificateModalOpen {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* Modal heading */
+
+.certificate-modal-box h2 {
+    margin-top: 10px;
+    margin-bottom: 12px;
+
+    font-family: "Fraunces", serif;
+
+    font-size: 30px;
+
+    color: #f3eee2;
+}
+
+
+/* Modal description */
+
+.certificate-modal-text {
+    margin-bottom: 28px;
+
+    color: #aeb9cc;
+
+    line-height: 1.7;
+}
+
+
+/* Close button */
+
+.certificate-modal-close {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #aeb9cc;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+
+.certificate-modal-close:hover {
+    color: #d4a91e;
+}
+
+
+/* Form group */
+
+.certificate-form-group {
+    margin-bottom: 20px;
+}
+
+
+/* Labels */
+
+.certificate-form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    color: #d4a91e;
+}
+
+
+/* Input and select */
+
+.certificate-form-group input,
+.certificate-form-group select {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 14px;
+
+    border: 1px solid #39465a;
+
+    outline: none;
+
+    background: #0b1423;
+
+    color: #f3eee2;
+
+    font-family: "IBM Plex Sans", sans-serif;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Placeholder */
+
+.certificate-form-group input::placeholder {
+    color: #718096;
+}
+
+
+/* Focus */
+
+.certificate-form-group input:focus,
+.certificate-form-group select:focus {
+
+    border-color: #d4a91e;
+
+    box-shadow:
+        0 0 0 2px rgba(212, 169, 30, 0.12);
+}
+
+
+/* Select options */
+
+.certificate-form-group select option {
+    background: #111a2b;
+    color: #f3eee2;
+}
+
+
+/* Submit button */
+
+.certificate-submit-btn {
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+
+/* Message */
+
+.certificate-message {
+
+    min-height: 22px;
+
+    margin-top: 16px;
+
+    text-align: center;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 13px;
+
+    color: #aeb9cc;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .certificate-modal {
+        padding: 15px;
+    }
+
+    .certificate-modal-box {
+
+        padding: 30px 22px;
+
+    }
+
+    .certificate-modal-box h2 {
+
+        font-size: 25px;
+
+    }
+
+}
