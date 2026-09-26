@@ -1,88 +1,138 @@
+"use strict";
+
+
 document.addEventListener("DOMContentLoaded", function () {
+
 
     /* =====================================================
        MOBILE NAVIGATION
     ===================================================== */
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navigation = document.getElementById("navigation");
+    const navToggle =
+        document.getElementById("navToggle");
 
-    if (menuBtn && navigation) {
+    const navLinks =
+        document.getElementById("navLinks");
 
-        menuBtn.addEventListener("click", function () {
 
-            navigation.classList.toggle("show");
+    if (navToggle && navLinks) {
 
-        });
+        navToggle.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    navLinks.classList.toggle("open");
+
+                navToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+            }
+        );
+
+
+        document
+            .querySelectorAll("#navLinks a")
+            .forEach(function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        navLinks.classList.remove("open");
+
+                        navToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            });
 
     }
 
 
-    /* Close mobile menu after clicking navigation */
-
-    document.querySelectorAll(".nav-link").forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            if (navigation) {
-                navigation.classList.remove("show");
-            }
-
-        });
-
-    });
-
 
     /* =====================================================
-       HEADER SCROLL EFFECT
+       NAVBAR SCROLL EFFECT
     ===================================================== */
 
-    const header = document.getElementById("header");
+    const topbar =
+        document.getElementById("topbar");
 
-    window.addEventListener("scroll", function () {
 
-        if (!header) {
+    function updateNavbar() {
+
+        if (!topbar) {
             return;
         }
 
+
         if (window.scrollY > 30) {
 
-            header.classList.add("scrolled");
+            topbar.classList.add("scrolled");
 
         } else {
 
-            header.classList.remove("scrolled");
+            topbar.classList.remove("scrolled");
 
         }
 
-    });
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateNavbar,
+        { passive: true }
+    );
+
+
+    updateNavbar();
+
 
 
     /* =====================================================
        ACTIVE NAVIGATION
     ===================================================== */
 
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-link");
+    const sections =
+        document.querySelectorAll(
+            "section[id]"
+        );
 
-    function updateActiveNavigation() {
+    const navigationLinks =
+        document.querySelectorAll(
+            "#navLinks a"
+        );
 
-        let currentSection = "";
+
+    function updateActiveLink() {
+
+        let current =
+            "";
+
 
         sections.forEach(function (section) {
 
             const sectionTop =
-                section.offsetTop - 150;
+                section.offsetTop - 180;
 
-            const sectionHeight =
+            const sectionBottom =
+                sectionTop +
                 section.offsetHeight;
+
 
             if (
                 window.scrollY >= sectionTop &&
-                window.scrollY < sectionTop + sectionHeight
+                window.scrollY < sectionBottom
             ) {
 
-                currentSection =
+                current =
                     section.getAttribute("id");
 
             }
@@ -90,29 +140,43 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        navLinks.forEach(function (link) {
+        navigationLinks.forEach(
+            function (link) {
 
-            link.classList.remove("active");
+                link.classList.remove(
+                    "active"
+                );
 
-            const href =
-                link.getAttribute("href");
 
-            if (href === "#" + currentSection) {
+                const href =
+                    link.getAttribute("href");
 
-                link.classList.add("active");
+
+                if (
+                    href === "#" + current
+                ) {
+
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
 
             }
-
-        });
+        );
 
     }
 
+
     window.addEventListener(
         "scroll",
-        updateActiveNavigation
+        updateActiveLink,
+        { passive: true }
     );
 
-    updateActiveNavigation();
+
+    updateActiveLink();
+
 
 
     /* =====================================================
@@ -121,75 +185,92 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const revealElements =
         document.querySelectorAll(
-            ".article-card, " +
-            ".info-card, " +
+            ".about-main-card, " +
+            ".mini-card, " +
             ".skill-card, " +
-            ".project-featured, " +
+            ".featured-project, " +
             ".project-card, " +
             ".experience-card, " +
             ".education-item, " +
-            ".contact-box"
+            ".contact-content"
         );
 
 
-    revealElements.forEach(function (element) {
+    revealElements.forEach(
+        function (element) {
 
-        element.classList.add("reveal");
+            element.classList.add(
+                "reveal"
+            );
 
-    });
+        }
+    );
 
 
-    if ("IntersectionObserver" in window) {
+    if (
+        "IntersectionObserver" in window
+    ) {
 
-        const observer =
+        const revealObserver =
             new IntersectionObserver(
-
                 function (entries, observer) {
 
-                    entries.forEach(function (entry) {
+                    entries.forEach(
+                        function (entry) {
 
-                        if (entry.isIntersecting) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                                entry.target.classList.add(
+                                    "visible"
+                                );
 
-                            observer.unobserve(
-                                entry.target
-                            );
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
 
                         }
-
-                    });
+                    );
 
                 },
-
                 {
                     threshold: 0.12
                 }
-
             );
 
 
-        revealElements.forEach(function (element) {
+        revealElements.forEach(
+            function (element) {
 
-            observer.observe(element);
+                revealObserver.observe(
+                    element
+                );
 
-        });
+            }
+        );
 
     } else {
 
-        revealElements.forEach(function (element) {
+        revealElements.forEach(
+            function (element) {
 
-            element.classList.add("visible");
+                element.classList.add(
+                    "visible"
+                );
 
-        });
+            }
+        );
 
     }
 
 
+
     /* =====================================================
        CERTIFICATE MODAL
+       EXISTING JAVA BACKEND IS PRESERVED
     ===================================================== */
 
     const viewCertificateBtn =
@@ -197,20 +278,24 @@ document.addEventListener("DOMContentLoaded", function () {
             "viewCertificateBtn"
         );
 
+
     const certificateModal =
         document.getElementById(
             "certificateModal"
         );
+
 
     const closeCertificateModal =
         document.getElementById(
             "closeCertificateModal"
         );
 
+
     const certificateViewerForm =
         document.getElementById(
             "certificateViewerForm"
         );
+
 
     const certificateMessage =
         document.getElementById(
@@ -218,9 +303,13 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-    /* Open modal */
 
-    if (viewCertificateBtn) {
+    /* OPEN */
+
+    if (
+        viewCertificateBtn &&
+        certificateModal
+    ) {
 
         viewCertificateBtn.addEventListener(
             "click",
@@ -230,18 +319,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     "show"
                 );
 
+
                 const nameInput =
                     document.getElementById(
                         "viewerName"
                     );
 
+
                 if (nameInput) {
 
-                    setTimeout(function () {
+                    setTimeout(
+                        function () {
 
-                        nameInput.focus();
+                            nameInput.focus();
 
-                    }, 100);
+                        },
+                        100
+                    );
 
                 }
 
@@ -251,9 +345,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* Close modal */
 
-    if (closeCertificateModal) {
+    /* CLOSE */
+
+    if (
+        closeCertificateModal &&
+        certificateModal
+    ) {
 
         closeCertificateModal.addEventListener(
             "click",
@@ -269,7 +367,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* Close by clicking outside */
+
+    /* CLOSE OUTSIDE */
 
     if (certificateModal) {
 
@@ -294,7 +393,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* Close using Escape */
+
+    /* ESCAPE */
 
     document.addEventListener(
         "keydown",
@@ -316,9 +416,10 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
+
     /* =====================================================
        CERTIFICATE FORM
-       ===================================================== */
+    ===================================================== */
 
     if (certificateViewerForm) {
 
@@ -334,6 +435,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         "viewerName"
                     );
 
+
                 const genderInput =
                     document.getElementById(
                         "viewerGender"
@@ -343,11 +445,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 const name =
                     nameInput.value.trim();
 
+
                 const gender =
                     genderInput.value;
 
-
-                /* Validate name */
 
                 if (name === "") {
 
@@ -358,8 +459,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
-
-                /* Validate gender */
 
                 if (gender === "") {
 
@@ -377,10 +476,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 try {
 
+
                     /*
-                     * IMPORTANT:
-                     * This is your existing Java Servlet.
-                     * Do not change it.
+                     * IMPORTANT
+                     *
+                     * This is the SAME servlet
+                     * used by your existing project.
+                     *
+                     * Do not change your Java backend.
                      */
 
                     const formData =
@@ -392,6 +495,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         name
                     );
 
+
                     formData.append(
                         "gender",
                         gender
@@ -402,15 +506,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         await fetch(
                             "save-certificate-viewer",
                             {
-                                method: "POST",
+                                method:
+                                    "POST",
 
                                 headers: {
+
                                     "Content-Type":
                                         "application/x-www-form-urlencoded;charset=UTF-8"
+
                                 },
 
                                 body:
                                     formData.toString()
+
                             }
                         );
 
@@ -428,33 +536,41 @@ document.addEventListener("DOMContentLoaded", function () {
                         "Details saved. Opening certificate...";
 
 
-                    setTimeout(function () {
-
-                        window.open(
-                            "certificates/internship-certificate.pdf",
-                            "_blank"
-                        );
+                    setTimeout(
+                        function () {
 
 
-                        certificateModal.classList.remove(
-                            "show"
-                        );
+                            window.open(
+                                "certificates/internship-certificate.pdf",
+                                "_blank"
+                            );
 
 
-                        certificateViewerForm.reset();
+                            certificateModal.classList.remove(
+                                "show"
+                            );
 
-                        certificateMessage.textContent =
-                            "";
 
-                    }, 700);
+                            certificateViewerForm.reset();
+
+
+                            certificateMessage.textContent =
+                                "";
+
+
+                        },
+                        700
+                    );
 
 
                 } catch (error) {
+
 
                     console.error(
                         "Certificate error:",
                         error
                     );
+
 
                     certificateMessage.textContent =
                         "Unable to save details. Please try again.";
@@ -467,12 +583,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+
     /* =====================================================
-       BUTTON HOVER EFFECT
+       SMOOTH BUTTON INTERACTION
     ===================================================== */
 
-    document.querySelectorAll(".btn").forEach(
-        function (button) {
+    document
+        .querySelectorAll(".primary-button, .secondary-button, .nav-button")
+        .forEach(function (button) {
 
             button.addEventListener(
                 "mouseenter",
@@ -495,7 +613,53 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             );
 
-        }
-    );
+        });
+
+
+
+    /* =====================================================
+       HERO PARALLAX
+    ===================================================== */
+
+    const heroVisual =
+        document.querySelector(
+            ".hero-visual"
+        );
+
+
+    if (
+        heroVisual &&
+        window.matchMedia(
+            "(min-width: 900px)"
+        ).matches
+    ) {
+
+        window.addEventListener(
+            "mousemove",
+            function (event) {
+
+                const x =
+                    (event.clientX /
+                        window.innerWidth -
+                        .5) * 8;
+
+
+                const y =
+                    (event.clientY /
+                        window.innerHeight -
+                        .5) * 8;
+
+
+                heroVisual.style.transform =
+                    "translate(" +
+                    x +
+                    "px," +
+                    y +
+                    "px)";
+
+            }
+        );
+
+    }
 
 });
