@@ -1,599 +1,324 @@
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-    "use strict";
-
-
-    /* =========================================================
-       REDUCED MOTION
-       ========================================================= */
-
-    var prefersReducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-
-
-    /* =========================================================
+    /* =====================================================
        MOBILE NAVIGATION
-       ========================================================= */
+    ===================================================== */
 
-    var navToggle =
-        document.getElementById("navToggle");
+    const menuBtn = document.getElementById("menuBtn");
+    const navigation = document.getElementById("navigation");
 
-    var navLinks =
-        document.getElementById("navLinks");
+    if (menuBtn && navigation) {
 
+        menuBtn.addEventListener("click", function () {
 
-    if (navToggle && navLinks) {
+            navigation.classList.toggle("show");
 
-        navToggle.addEventListener(
-            "click",
-            function () {
+        });
 
-                var isOpen =
-                    navLinks.classList.toggle("open");
+    }
 
 
-                navToggle.setAttribute(
-                    "aria-expanded",
-                    isOpen ? "true" : "false"
-                );
+    /* Close mobile menu after clicking navigation */
 
+    document.querySelectorAll(".nav-link").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            if (navigation) {
+                navigation.classList.remove("show");
             }
-        );
+
+        });
+
+    });
 
 
-        navLinks
-            .querySelectorAll("a")
-            .forEach(function (link) {
+    /* =====================================================
+       HEADER SCROLL EFFECT
+    ===================================================== */
 
-                link.addEventListener(
-                    "click",
-                    function () {
+    const header = document.getElementById("header");
 
-                        navLinks.classList.remove("open");
+    window.addEventListener("scroll", function () {
 
-                        navToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
+        if (!header) {
+            return;
+        }
 
-                    }
-                );
+        if (window.scrollY > 30) {
 
-            });
+            header.classList.add("scrolled");
 
-    }
+        } else {
 
-
-
-    /* =========================================================
-       HERO STAMP
-       ========================================================= */
-
-    var heroStamp =
-        document.getElementById("heroStamp");
-
-
-    if (heroStamp) {
-
-        window.setTimeout(
-            function () {
-
-                heroStamp.classList.add(
-                    "stamped"
-                );
-
-            },
-
-            prefersReducedMotion
-                ? 0
-                : 500
-        );
-
-    }
-
-
-
-    /* =========================================================
-       SCROLL REVEAL
-       ========================================================= */
-
-    var revealTargets =
-        document.querySelectorAll(
-
-            ".dossier-card, " +
-            ".skill-block, " +
-            ".case-file, " +
-            ".internship-card, " +
-            ".ledger-row, " +
-            ".contact-card"
-
-        );
-
-
-    revealTargets.forEach(
-        function (element) {
-
-            element.classList.add(
-                "reveal"
-            );
+            header.classList.remove("scrolled");
 
         }
+
+    });
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
+
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function updateActiveNavigation() {
+
+        let currentSection = "";
+
+        sections.forEach(function (section) {
+
+            const sectionTop =
+                section.offsetTop - 150;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionTop + sectionHeight
+            ) {
+
+                currentSection =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach(function (link) {
+
+            link.classList.remove("active");
+
+            const href =
+                link.getAttribute("href");
+
+            if (href === "#" + currentSection) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation
     );
 
+    updateActiveNavigation();
 
-    var seals =
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const revealElements =
         document.querySelectorAll(
-            "[data-seal]"
+            ".article-card, " +
+            ".info-card, " +
+            ".skill-card, " +
+            ".project-featured, " +
+            ".project-card, " +
+            ".experience-card, " +
+            ".education-item, " +
+            ".contact-box"
         );
 
+
+    revealElements.forEach(function (element) {
+
+        element.classList.add("reveal");
+
+    });
 
 
     if ("IntersectionObserver" in window) {
 
-
-        var revealObserver =
+        const observer =
             new IntersectionObserver(
 
                 function (entries, observer) {
 
-                    entries.forEach(
-                        function (entry) {
+                    entries.forEach(function (entry) {
 
-                            if (
-                                entry.isIntersecting
-                            ) {
+                        if (entry.isIntersecting) {
 
-                                entry.target.classList.add(
-                                    "in-view"
-                                );
+                            entry.target.classList.add(
+                                "visible"
+                            );
 
-                                observer.unobserve(
-                                    entry.target
-                                );
-
-                            }
+                            observer.unobserve(
+                                entry.target
+                            );
 
                         }
-                    );
+
+                    });
 
                 },
 
                 {
-                    threshold: 0.15,
-
-                    rootMargin:
-                        "0px 0px -40px 0px"
+                    threshold: 0.12
                 }
 
             );
 
 
-        revealTargets.forEach(
-            function (element) {
+        revealElements.forEach(function (element) {
 
-                revealObserver.observe(
-                    element
-                );
+            observer.observe(element);
 
-            }
-        );
+        });
 
+    } else {
 
+        revealElements.forEach(function (element) {
 
-        var sealObserver =
-            new IntersectionObserver(
+            element.classList.add("visible");
 
-                function (entries, observer) {
-
-                    entries.forEach(
-                        function (entry) {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target.classList.add(
-                                    "stamped"
-                                );
-
-                                observer.unobserve(
-                                    entry.target
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-
-                {
-                    threshold: 0.6
-                }
-
-            );
-
-
-        seals.forEach(
-            function (element) {
-
-                sealObserver.observe(
-                    element
-                );
-
-            }
-        );
-
-    }
-
-    else {
-
-        revealTargets.forEach(
-            function (element) {
-
-                element.classList.add(
-                    "in-view"
-                );
-
-            }
-        );
-
-
-        seals.forEach(
-            function (element) {
-
-                element.classList.add(
-                    "stamped"
-                );
-
-            }
-        );
+        });
 
     }
 
 
+    /* =====================================================
+       CERTIFICATE MODAL
+    ===================================================== */
 
-    /* =========================================================
-       TERMINAL TYPING EFFECT
-       ========================================================= */
-
-    var terminalBody =
+    const viewCertificateBtn =
         document.getElementById(
-            "terminalBody"
+            "viewCertificateBtn"
         );
 
-
-    var logLines = [
-
-        "POST /api/auth/login          200 OK",
-
-        "GET  /api/elections/active    200 OK",
-
-        "GET  /api/candidates?eid=12   200 OK",
-
-        "POST /api/votes/cast          201 CREATED",
-
-        "GET  /api/results/12          200 OK",
-
-        "-- one-person-one-vote: PASSED --"
-
-    ];
-
-
-
-    function typeTerminal() {
-
-        if (!terminalBody) {
-            return;
-        }
-
-
-        var lineIndex = 0;
-
-        var charIndex = 0;
-
-
-        terminalBody.textContent = "";
-
-
-        function typeChar() {
-
-
-            if (
-                lineIndex >=
-                logLines.length
-            ) {
-
-                terminalBody.textContent +=
-                    "\n$ _";
-
-                return;
-            }
-
-
-            var currentLine =
-                logLines[lineIndex];
-
-
-            if (
-                charIndex === 0 &&
-                lineIndex > 0
-            ) {
-
-                terminalBody.textContent +=
-                    "\n";
-
-            }
-
-
-            terminalBody.textContent +=
-                currentLine.charAt(
-                    charIndex
-                );
-
-
-            charIndex++;
-
-
-            if (
-                charIndex >=
-                currentLine.length
-            ) {
-
-                lineIndex++;
-
-                charIndex = 0;
-
-
-                window.setTimeout(
-                    typeChar,
-                    220
-                );
-
-            }
-
-            else {
-
-                window.setTimeout(
-                    typeChar,
-                    14
-                );
-
-            }
-
-        }
-
-
-        typeChar();
-
-    }
-
-
-
-    if (terminalBody) {
-
-
-        if (prefersReducedMotion) {
-
-            terminalBody.textContent =
-                logLines.join("\n") +
-                "\n$ _";
-
-        }
-
-
-        else if (
-            "IntersectionObserver"
-            in window
-        ) {
-
-
-            var termObserver =
-                new IntersectionObserver(
-
-                    function (
-                        entries,
-                        observer
-                    ) {
-
-                        entries.forEach(
-                            function (entry) {
-
-                                if (
-                                    entry.isIntersecting
-                                ) {
-
-                                    typeTerminal();
-
-                                    observer.disconnect();
-
-                                }
-
-                            }
-                        );
-
-                    },
-
-                    {
-                        threshold: 0.4
-                    }
-
-                );
-
-
-            termObserver.observe(
-                terminalBody
-            );
-
-        }
-
-
-        else {
-
-            typeTerminal();
-
-        }
-
-    }
-
-
-
-    /* =========================================================
-       NAVIGATION SHADOW
-       ========================================================= */
-
-    var topbar =
+    const certificateModal =
         document.getElementById(
-            "topbar"
+            "certificateModal"
+        );
+
+    const closeCertificateModal =
+        document.getElementById(
+            "closeCertificateModal"
+        );
+
+    const certificateViewerForm =
+        document.getElementById(
+            "certificateViewerForm"
+        );
+
+    const certificateMessage =
+        document.getElementById(
+            "certificateMessage"
         );
 
 
-    if (topbar) {
+    /* Open modal */
 
+    if (viewCertificateBtn) {
 
-        window.addEventListener(
-
-            "scroll",
-
+        viewCertificateBtn.addEventListener(
+            "click",
             function () {
 
+                certificateModal.classList.add(
+                    "show"
+                );
 
-                if (
-                    window.scrollY > 40
-                ) {
+                const nameInput =
+                    document.getElementById(
+                        "viewerName"
+                    );
 
-                    topbar.style.boxShadow =
-                        "0 8px 24px rgba(0,0,0,0.25)";
+                if (nameInput) {
+
+                    setTimeout(function () {
+
+                        nameInput.focus();
+
+                    }, 100);
 
                 }
 
-
-                else {
-
-                    topbar.style.boxShadow =
-                        "none";
-
-                }
-
-            },
-
-            {
-                passive: true
             }
-
         );
 
     }
 
 
+    /* Close modal */
 
-    /* =========================================================
-       CERTIFICATE CHECK
-       ========================================================= */
+    if (closeCertificateModal) {
 
-    var certificateLinks =
-        document.querySelectorAll(
-            'a[href="certificates/internship-certificate.pdf"]'
+        closeCertificateModal.addEventListener(
+            "click",
+            function () {
+
+                certificateModal.classList.remove(
+                    "show"
+                );
+
+            }
         );
 
-
-    certificateLinks.forEach(
-        function (link) {
+    }
 
 
-            link.addEventListener(
-                "click",
-                function () {
+    /* Close by clicking outside */
 
-                    console.log(
-                        "Opening internship certificate..."
+    if (certificateModal) {
+
+        certificateModal.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target ===
+                    certificateModal
+                ) {
+
+                    certificateModal.classList.remove(
+                        "show"
                     );
 
                 }
-            );
+
+            }
+        );
+
+    }
+
+
+    /* Close using Escape */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                certificateModal &&
+                certificateModal.classList.contains("show")
+            ) {
+
+                certificateModal.classList.remove(
+                    "show"
+                );
+
+            }
 
         }
     );
 
 
-})();
-/* =========================================================
-   CERTIFICATE VIEWER
-   ========================================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const viewCertificateBtn =
-        document.getElementById("viewCertificateBtn");
-
-    const certificateModal =
-        document.getElementById("certificateModal");
-
-    const closeCertificateModal =
-        document.getElementById("closeCertificateModal");
-
-    const certificateViewerForm =
-        document.getElementById("certificateViewerForm");
-
-    const certificateMessage =
-        document.getElementById("certificateMessage");
-
-
-    /* -----------------------------------------------------
-       OPEN CERTIFICATE FORM
-       ----------------------------------------------------- */
-
-    if (viewCertificateBtn) {
-
-        viewCertificateBtn.addEventListener("click", function () {
-
-            certificateModal.classList.add("show");
-
-        });
-
-    }
-
-
-    /* -----------------------------------------------------
-       CLOSE CERTIFICATE FORM
-       ----------------------------------------------------- */
-
-    if (closeCertificateModal) {
-
-        closeCertificateModal.addEventListener("click", function () {
-
-            certificateModal.classList.remove("show");
-
-        });
-
-    }
-
-
-    /* -----------------------------------------------------
-       CLOSE WHEN CLICKING OUTSIDE THE FORM
-       ----------------------------------------------------- */
-
-    if (certificateModal) {
-
-        certificateModal.addEventListener("click", function (event) {
-
-            if (event.target === certificateModal) {
-
-                certificateModal.classList.remove("show");
-
-            }
-
-        });
-
-    }
-
-
-    /* -----------------------------------------------------
-       SUBMIT NAME + GENDER
-       ----------------------------------------------------- */
+    /* =====================================================
+       CERTIFICATE FORM
+       ===================================================== */
 
     if (certificateViewerForm) {
 
@@ -604,15 +329,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.preventDefault();
 
 
-                const name =
-                    document.getElementById("viewerName")
-                        .value
-                        .trim();
+                const nameInput =
+                    document.getElementById(
+                        "viewerName"
+                    );
 
+                const genderInput =
+                    document.getElementById(
+                        "viewerGender"
+                    );
+
+
+                const name =
+                    nameInput.value.trim();
 
                 const gender =
-                    document.getElementById("viewerGender")
-                        .value;
+                    genderInput.value;
 
 
                 /* Validate name */
@@ -639,17 +371,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                /* Show saving message */
-
                 certificateMessage.textContent =
                     "Saving your details...";
 
 
                 try {
 
-                    /* ------------------------------------------------
-                       SEND DATA TO JAVA SERVLET
-                       ------------------------------------------------ */
+                    /*
+                     * IMPORTANT:
+                     * This is your existing Java Servlet.
+                     * Do not change it.
+                     */
 
                     const formData =
                         new URLSearchParams();
@@ -659,7 +391,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         "name",
                         name
                     );
-
 
                     formData.append(
                         "gender",
@@ -684,28 +415,18 @@ document.addEventListener("DOMContentLoaded", function () {
                         );
 
 
-                    /* ------------------------------------------------
-                       CHECK SERVER RESPONSE
-                       ------------------------------------------------ */
-
                     if (!response.ok) {
 
                         throw new Error(
-                            "Unable to save certificate viewer details."
+                            "Server error"
                         );
 
                     }
 
 
-                    /* ------------------------------------------------
-                       SUCCESS
-                       ------------------------------------------------ */
-
                     certificateMessage.textContent =
-                        "Details saved successfully. Opening certificate...";
+                        "Details saved. Opening certificate...";
 
-
-                    /* Wait a little and open certificate */
 
                     setTimeout(function () {
 
@@ -715,18 +436,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         );
 
 
-                        /* Close popup */
+                        certificateModal.classList.remove(
+                            "show"
+                        );
 
-                        certificateModal.classList.remove("show");
-
-
-                        /* Clear form */
 
                         certificateViewerForm.reset();
 
-
-                        certificateMessage.textContent = "";
-
+                        certificateMessage.textContent =
+                            "";
 
                     }, 700);
 
@@ -734,13 +452,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 } catch (error) {
 
                     console.error(
-                        "Certificate viewer error:",
+                        "Certificate error:",
                         error
                     );
 
-
                     certificateMessage.textContent =
-                        "Unable to save your details. Please try again.";
+                        "Unable to save details. Please try again.";
 
                 }
 
@@ -748,5 +465,37 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
+
+
+    /* =====================================================
+       BUTTON HOVER EFFECT
+    ===================================================== */
+
+    document.querySelectorAll(".btn").forEach(
+        function (button) {
+
+            button.addEventListener(
+                "mouseenter",
+                function () {
+
+                    button.style.transform =
+                        "translateY(-2px)";
+
+                }
+            );
+
+
+            button.addEventListener(
+                "mouseleave",
+                function () {
+
+                    button.style.transform =
+                        "";
+
+                }
+            );
+
+        }
+    );
 
 });
